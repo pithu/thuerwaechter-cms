@@ -1,0 +1,14 @@
+{
+  "name": "thuerwaechter-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "lerna run build"
+  },
+  "author": "Philipp Thuerwaechter <pithu@thuerwaechter.de>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}

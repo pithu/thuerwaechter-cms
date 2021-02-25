@@ -1,0 +1,23 @@
+{
+  "name": "thuerwaechter-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.jsx",
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@sanity/client": "^2.2.6",
+    "@sanity/image-url": "^0.140.22",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "snowpack": "3.0.11",
+    "@snowpack/plugin-webpack": "^2.3.0"
+  },
+  "scripts": {
+    "start": "snowpack dev",
+    "build": "snowpack build"
+  },
+  "author": "Philipp Thuerwaechter <pithu@thuerwaechter.de>",
+  "license": "UNLICENSED"
+}
