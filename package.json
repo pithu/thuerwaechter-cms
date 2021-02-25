@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "lerna run build"
+    "build": "lerna bootstrap && lerna run build"
   },
   "author": "Philipp Thuerwaechter <pithu@thuerwaechter.de>",
   "license": "UNLICENSED",
