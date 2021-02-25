@@ -26,7 +26,7 @@ export default {
         ],
     }, {
         title: 'Email',
-        name: 'email',
+        name: 'e-mail',
         type: 'object',
         fields: [
             {

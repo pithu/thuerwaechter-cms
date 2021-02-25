@@ -1,0 +1,52 @@
+/* Add CSS styles here! */
+body {
+  font-family: sans-serif;
+}
+
+td {
+  padding: 0.2em;
+}
+.container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  height: 98vh;
+}
+
+.item {
+  background: gray;
+  margin: 1px;
+}
+
+.leftColumn {
+  width: 236px;
+}
+
+.middleColumn {
+  width: 500px;
+}
+
+.rightColumn {
+  float: left;
+  width: 236px;
+}
+
+.loading {
+  font-size: x-large;
+  font-weight: bold;
+  text-align: center;
+}
+
+@media only screen and (max-width: 740px) {
+  .container {
+    display: flex;
+    flex-flow: column-reverse wrap;
+    justify-content: center;
+    height: 98vh;
+  }
+
+  .rightColumn {
+    align-self: flex-end;
+  }
+}
+

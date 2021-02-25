@@ -1,83 +1,59 @@
 import React, { useState, useEffect } from 'react';
-import { Paper, Grid, Typography } from "@material-ui/core";
+
+import { urlFor, fetchAll } from "./sanityClient";
+
 import Loading from "./Loading";
-import { makeStyles } from "@material-ui/core/styles";
 
-import { sanityApi } from "./sanityApi";
-import { urlFor } from "./sanityClient";
+const mapAddressField = (address) => {
+    let row;
 
-const useStyles = makeStyles((theme) => ({
-    paper: {
-        padding: theme.spacing(3),
-        textAlign: 'center',
-        color: 'black',
-        backgroundColor: 'grey',
-    },}));
+    switch (address.kind) {
+        case 'Postal':
+            row = <><td></td><td>{address.value.split("\n").map((v) => (<>{v}<br /></>))}</td></>;
+            break;
+        case 'UstId':
+            row = <><td>Ust ID Nr.</td><td>{address.value}</td></>;
+            break;
+        default:
+            row = <><td>{address.kind}</td><td>{address.value}</td></>;
+    }
+
+    return <tr key={address._key}>{row}</tr>;
+}
 
 const HomePage = () => {
-    const classes = useStyles();
     const [cmsData, setCmsData] = useState(null);
 
     useEffect(() => {
-        sanityApi.fetchAll(setCmsData);
+        fetchAll(setCmsData);
     }, []);
 
-    console.log('hello world', { cmsData });
     if (cmsData == null) {
         return (<Loading />);
     }
 
     return (
-        <>
-            <Grid container direction="row" justify="center" spacing={1}>
-                <Grid item xs={3}>
-                    <Paper className={classes.paper} />
-                </Grid>
-                <Grid item xs={6}>
-                    <Paper className={classes.paper}>
-                        <img src={urlFor(cmsData.header.header).width(499).url()} />
-                    </Paper>
-                </Grid>
-                <Grid item xs={3}>
-                    <Paper className={classes.paper}>
-                        <img src={urlFor(cmsData.header.logo).width(236).url()} />
-                    </Paper>
-                </Grid>
-                <Grid item xs={3}>
-                    <Paper className={classes.paper} />
-                </Grid>
-                <Grid container item xs={6} spacing={1}>
-                    <Grid item xs={3}>
-                        <Paper className={classes.paper} />
-                    </Grid>
-                    <Grid item xs={9}>
-                        <Paper className={classes.paper}>
-                            <Typography align="left">
+        <div className="container">
+            <div className="item leftColumn"></div>
+            <div className="item middleColumn">
+                <img src={urlFor(cmsData.header.header).width(499).url()} />
+                <div className="middleContent">
+                    <p />
+                    <table>
+                        <tr>
+                            <td>Owner</td>
+                            <td>
                                 {cmsData.employee.title} {cmsData.employee.firstName} {cmsData.employee.lastName}
-                            </Typography>
-                        </Paper>
-                    </Grid>
-                    { cmsData.contact.address.map((address) => (
-                        <React.Fragment key={address._key}>
-                            <Grid item xs={3}>
-                                <Paper className={classes.paper}>
-                                    <Typography align="right">{ address.kind }</Typography>
-                                </Paper>
-                            </Grid>
-                            <Grid item xs={9}>
-                                <Paper className={classes.paper}>
-                                    <Typography align="left">{ address.value }</Typography>
-                                </Paper>
-                            </Grid>
-                        </React.Fragment>
-                        ))
-                    }
-                 </Grid>
-                <Grid item xs={3}>
-                    <Paper className={classes.paper} />
-                </Grid>
-            </Grid>
-        </>
+                            </td>
+                        </tr>
+                        { cmsData.contact.address.map(mapAddressField) }
+                    </table>
+                </div>
+            </div>
+            <div className='item rightColumn'>
+                <img src={urlFor(cmsData.header.logo).width(236).url()} />
+            </div>
+        </div>
     );
 }
 
