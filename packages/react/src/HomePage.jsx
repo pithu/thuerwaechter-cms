@@ -7,12 +7,16 @@ import Loading from "./Loading";
 const mapAddressField = (address) => {
     let row;
 
-    switch (address.kind) {
-        case 'Postal':
+    switch (address._type) {
+        case 'postal':
             row = <><td></td><td>{address.value.split("\n").map((v) => (<>{v}<br /></>))}</td></>;
             break;
-        case 'UstId':
+        case 'ids':
             row = <><td>Ust ID Nr.</td><td>{address.value}</td></>;
+            break;
+        case 'phone':
+            const telHref = `tel:${address.value}`;
+            row = <><td>{address.kind}</td><td><a href={telHref}>{address.value}</a></td></>;
             break;
         default:
             row = <><td>{address.kind}</td><td>{address.value}</td></>;
@@ -32,6 +36,8 @@ const HomePage = () => {
         return (<Loading />);
     }
 
+    console.log({ cmsData });
+
     return (
         <div className="container">
             <div className="item leftColumn"></div>
@@ -39,7 +45,7 @@ const HomePage = () => {
                 <img src={urlFor(cmsData.header.header).width(499).url()} />
                 <div className="middleContent">
                     <p />
-                    <table>
+                    <table><tbody>
                         <tr>
                             <td>Owner</td>
                             <td>
@@ -47,7 +53,7 @@ const HomePage = () => {
                             </td>
                         </tr>
                         { cmsData.contact.address.map(mapAddressField) }
-                    </table>
+                    </tbody></table>
                 </div>
             </div>
             <div className='item rightColumn'>

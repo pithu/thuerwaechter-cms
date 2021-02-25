@@ -6,29 +6,26 @@ body {
 td {
   padding: 0.2em;
 }
+
+a:link, a:visited, a:hover, a:active {
+  color: black;
+}
+
 .container {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   height: 98vh;
+  min-height: 0;
 }
 
 .item {
-  background: gray;
+  /*background: gray;*/
   margin: 1px;
 }
 
 .leftColumn {
-  width: 236px;
-}
-
-.middleColumn {
-  width: 500px;
-}
-
-.rightColumn {
-  float: left;
-  width: 236px;
+  width: 0px;
 }
 
 .loading {
@@ -39,14 +36,36 @@ td {
 
 @media only screen and (max-width: 740px) {
   .container {
-    display: flex;
-    flex-flow: column-reverse wrap;
-    justify-content: center;
-    height: 98vh;
+    flex-flow: column-reverse nowrap;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .leftColumn {
+    width: 0px;
+  }
+
+  .middleColumn {
+    width: 500px;
   }
 
   .rightColumn {
-    align-self: flex-end;
+    text-align: right;
+    width: 500px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .middleColumn img {
+    width: 100%;
+  }
+
+  .middleColumn {
+    width: 100%;
+  }
+
+  .rightColumn {
+    width: 100%;
   }
 }
 
