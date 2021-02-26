@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import { urlFor, fetchAll } from "./sanityClient";
-
-import Loading from "./Loading";
+import { urlFor, fetchAll } from './sanityClient';
+import Loading from './Loading';
+import ObfuscatedLink from './ObfuscatedLink';
 
 const mapAddressField = (address) => {
     let row;
@@ -15,8 +15,10 @@ const mapAddressField = (address) => {
             row = <><td>Ust ID Nr.</td><td>{address.value}</td></>;
             break;
         case 'phone':
-            const telHref = `tel:${address.value}`;
-            row = <><td>{address.kind}</td><td><a href={telHref}>{address.value}</a></td></>;
+            row = <><td>{address.kind}</td><td><ObfuscatedLink linkType="tel" url={address.value} /></td></>;
+            break;
+        case 'e-mail':
+            row = <><td>{address.kind}</td><td><ObfuscatedLink linkType="mailto" url={address.value} /></td></>;
             break;
         default:
             row = <><td>{address.kind}</td><td>{address.value}</td></>;
