@@ -22,7 +22,12 @@ jobs:
           npm install
           npm run build
 
-      - name: deploy
+      - name: deploy cms
         run: |
-          echo deploy project
+          echo deploy cms
           SANITY_AUTH_TOKEN="${{ secrets.SANITY_AUTH_TOKEN }}" npm run deploy
+
+      - name: deploy prod
+        run: |
+          echo trigger prod deploy
+          git push -f origin origin/main:production
