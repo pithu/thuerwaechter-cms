@@ -38,8 +38,6 @@ const HomePage = () => {
         return (<Loading />);
     }
 
-    console.log({ cmsData });
-
     return (
         <div className="container">
             <div className="item leftColumn"></div>
