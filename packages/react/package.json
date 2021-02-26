@@ -18,5 +18,12 @@
     "build": "snowpack build"
   },
   "author": "Philipp Thuerwaechter <pithu@thuerwaechter.de>",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "IE 11"
+    ]
+  }
 }
