@@ -29,9 +29,10 @@ jobs:
 
       - name: deploy prod
         run: |
-          aws s3 sync ./packages/react/build/js s3://thuerwaechter-website/js --delete
-          aws s3 sync ./packages/react/build/css s3://thuerwaechter-website/css --delete
-          aws s3 cp ./packages/react/build/index.html s3://thuerwaechter-website/
+          aws s3 sync ./packages/react/build/js s3://${{ secrets.AWS_S3_BUCKET }}/js --delete
+          aws s3 sync ./packages/react/build/css s3://${{ secrets.AWS_S3_BUCKET }}/css --delete
+          aws s3 cp ./packages/react/build/index.html s3://${{ secrets.AWS_S3_BUCKET }}/
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/index.html"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
