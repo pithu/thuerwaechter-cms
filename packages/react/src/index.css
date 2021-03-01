@@ -27,9 +27,16 @@ a:link, a:visited, a:hover, a:active {
   width: 0px;
 }
 
-.loading {
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 98vh;
+}
+
+.loadingItem {
+  font-size: 4em;
   text-align: center;
-  padding-top: 5em;
 }
 
 @media only screen and (max-width: 740px) {
