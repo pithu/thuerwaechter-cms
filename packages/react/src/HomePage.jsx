@@ -20,6 +20,9 @@ const mapAddressField = (address) => {
         case 'e-mail':
             row = <><td>{address.kind}</td><td><ObfuscatedLink linkType="mailto" url={address.value} /></td></>;
             break;
+        case 'link':
+            row = <><td>{address.kind}</td><td><a href={address.value} target="_blank">{address.value}</a></td></>;
+            break;
         default:
             row = <><td>{address.kind}</td><td>{address.value}</td></>;
     }

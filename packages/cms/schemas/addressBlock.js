@@ -47,6 +47,24 @@ export default {
             },
         ],
     }, {
+        title: 'Link',
+        name: 'link',
+        type: 'object',
+        fields: [
+            {
+                name: 'kind',
+                type: 'string',
+                title: 'Kind',
+                validation: Rule => Rule.required(),
+            },
+            {
+                name: 'value',
+                type: 'url',
+                title: 'Value',
+                validation: Rule => Rule.required(),
+            },
+        ],
+    }, {
         title: 'Postal',
         name: 'postal',
         type: 'object',
