@@ -4,14 +4,14 @@
   "description": "",
   "main": "src/index.jsx",
   "dependencies": {
-    "@sanity/client": "^2.2.6",
-    "@sanity/image-url": "^0.140.22",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "@sanity/client": "^6.10.0",
+    "@sanity/image-url": "^1.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "snowpack": "3.0.11",
-    "@snowpack/plugin-webpack": "^2.3.0"
+    "snowpack": "3.8.8",
+    "@snowpack/plugin-webpack": "^3.0.0"
   },
   "scripts": {
     "start": "snowpack dev",
