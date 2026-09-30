@@ -15,7 +15,8 @@
   },
   "scripts": {
     "start": "snowpack dev",
-    "build": "snowpack build"
+    "build": "snowpack build",
+    "postbuild": "cp public/.htaccess build/"
   },
   "author": "Philipp Thuerwaechter <pithu@thuerwaechter.de>",
   "license": "UNLICENSED",
